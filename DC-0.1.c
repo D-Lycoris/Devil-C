@@ -1,14 +1,14 @@
 /*********************************************
 
-Copyright (c), 17Èí¼ş¹¤³Ì ÕÔ¾¸Î¡£¬Co.,Ltd
+Copyright (c), 17è½¯ä»¶å·¥ç¨‹ èµµé–å·ï¼ŒCo.,Ltd
 FlieName: gzgl.c
 Author:        Version:        Date:
-Description:        //°å¿éÃèÊö
-Version:            //°æ±¾ĞÅÏ¢
-Function List:      //Ö÷Òªº¯Êı¹¦ÄÜ
+Description:        //æ¿å—æè¿°
+Version:            //ç‰ˆæœ¬ä¿¡æ¯
+Function List:      //ä¸»è¦å‡½æ•°åŠŸèƒ½
     1.
     2.
-History:            //ÀúÊ·ĞŞ¸Ä¼ÇÂ¼
+History:            //å†å²ä¿®æ”¹è®°å½•
 
     <author>    <time>    <version>    <desc>
 	  xxx      2018/6/19     0.1         
@@ -36,23 +36,23 @@ Others:
 
 typedef struct ZGGZ
 {
-	char wo_name[10];			//Ö°¹¤¹¤ºÅ
-	char id[10];				//Ö°¹¤ĞÕÃû
-	double position_value, Pay_salary;				//¹¤×Ê¡¢Ğ½½ğ
-	double duty_allowance, merit_pay, gross_pay, Personal_income_tax, payroll;		//½òÌù¡¢¼¨Ğ§¡¢Ó¦·¢¡¢¸öÈËËùµÃË°ºÍÊµ·¢¹¤×Ê
-}zggz;			//¹¤×Ê½á¹¹
+	char wo_name[10];			//èŒå·¥å·¥å·
+	char id[10];				//èŒå·¥å§“å
+	double position_value, Pay_salary;				//å·¥èµ„ã€è–ªé‡‘
+	double duty_allowance, merit_pay, gross_pay, Personal_income_tax, payroll;		//æ´¥è´´ã€ç»©æ•ˆã€åº”å‘ã€ä¸ªäººæ‰€å¾—ç¨å’Œå®å‘å·¥èµ„
+}zggz;			//å·¥èµ„ç»“æ„
 
 int count=0;
 
-int read(zggz t[])			//¶ÁÈ¡Ö°¹¤¹¤×ÊÊı¾İº¯Êı
+int read(zggz t[])			//è¯»å–èŒå·¥å·¥èµ„æ•°æ®å‡½æ•°
 {
 	zggz T;
-	FILE *fp;											//ÎÄ¼şÖ¸Õë
+	FILE *fp;											//æ–‡ä»¶æŒ‡é’ˆ
        if ((fp = fopen("gz.dat", "rb")) == NULL)
-		{												//Èô´ò¿ªÎÄ¼şÊ§°ÜÔòÍË³ö
-        puts("´ò¿ªÎÄ¼şÊ§°Ü£¡");
+		{											//è‹¥æ‰“å¼€æ–‡ä»¶å¤±è´¥åˆ™é€€å‡º
+        puts("æ‰“å¼€æ–‡ä»¶å¤±è´¥ï¼");
         return 0;
-		}												//Èç¹ûÎÄ¼ş´ò¿ª³É¹¦£¬Ôò¶ÁÈ¡Êı¾İ 
+		}											//å¦‚æœæ–‡ä»¶æ‰“å¼€æˆåŠŸï¼Œåˆ™è¯»å–æ•°æ® 
 		while (!feof(fp))       
 		{              
 			fscanf(fp, "%s\t", &T.wo_name);
@@ -66,14 +66,14 @@ int read(zggz t[])			//¶ÁÈ¡Ö°¹¤¹¤×ÊÊı¾İº¯Êı
 			fscanf(fp, "%f\n", &T.payroll);    
 			t[count]=T;
 			count++;       }
-			printf("\nÓĞ%d¸öÔ±¹¤ĞÅÏ¢±»¶ÁÈë\n",count);
+			printf("\nå†™å…¥%dä¸ªå‘˜å·¥ä¿¡æ¯\n",count);
 
 			fclose(fp);
 			return count;		
 }
 
 
-int write(zggz t[])							//±£´æÖ°¹¤¹¤×ÊÊı¾İº¯Êı
+int write(zggz t[])				//ä¿å­˜èŒå·¥å·¥èµ„æ•°æ®å‡½æ•°
 {
 	int i;
 	zggz z;
@@ -81,8 +81,8 @@ int write(zggz t[])							//±£´æÖ°¹¤¹¤×ÊÊı¾İº¯Êı
 	 {
 		FILE* fp1=fopen("gx.dat","w");
 		if (fp1==NULL)
-		{									//Èô´ò¿ªÎÄ¼şÊ§°ÜÔòÍË³ö
-        puts("´ò¿ªÎÄ¼şÊ§°Ü£¡");
+		{									//è‹¥æ‰“å¼€æ–‡ä»¶å¤±è´¥åˆ™é€€å‡º
+        puts("æ‰“å¼€æ–‡ä»¶å¤±è´¥ï¼");
         return 0;
 		}
 
@@ -100,22 +100,22 @@ int write(zggz t[])							//±£´æÖ°¹¤¹¤×ÊÊı¾İº¯Êı
 			}
 		}else
 	 {
-		 printf("ÈËÊıÎªÁã¡£");
+		 printf("äººæ•°ä¸ºé›¶ã€‚");
 	 }
     return 0;
 }
 
 
-int find(zggz t[])				//²éÑ¯Ö°¹¤¹¤×ÊÊı¾İº¯Êı
+int find(zggz t[])				//æŸ¥è¯¢èŒå·¥å·¥èµ„æ•°æ®å‡½æ•°
 {
 	char gonghao[10];
-	int flag=0;					//±ê¼ÇÔ±¹¤ÓĞÃ»ÓĞ´æÔÚ
-	int j=0;					//¼ÇÂ¼Ô±¹¤´æÔÚµÄÎ»ÖÃ
-	int i=0;					//¼ÇÂ¼Ô±¹¤´æÔÚµÄÎ»ÖÃ
-	printf("\nÇëÊäÈëÒª²éÑ¯µÄ¹¤ºÅ");
+	int flag=0;					//æ ‡è®°å‘˜å·¥æœ‰æ²¡æœ‰å­˜åœ¨
+	int j=0;					//è®°å½•å‘˜å·¥å­˜åœ¨çš„ä½ç½®
+	int i=0;					//è®°å½•å‘˜å·¥å­˜åœ¨çš„ä½ç½®
+	printf("\nè¯·è¾“å…¥è¦æŸ¥è¯¢çš„å·¥å·:");
 	scanf("%s",gonghao);
 
-	//ÔÚ½á¹¹ÌåÊı×é²éÕÒÓĞÎŞ¸Ã±àºÅµÄÔ±¹¤£¬Èç¹ûÓĞÄÇÃ´flag=1£¬·ñÔòflag=0
+	//åœ¨ç»“æ„ä½“æ•°ç»„æŸ¥æ‰¾æœ‰æ— è¯¥ç¼–å·çš„å‘˜å·¥ï¼Œå¦‚æœæœ‰é‚£ä¹ˆflag=1ï¼Œå¦åˆ™flag=0
 	for(i=0;i<count;i++)
 	{
 		if (t[i].id==gonghao)
@@ -124,9 +124,9 @@ int find(zggz t[])				//²éÑ¯Ö°¹¤¹¤×ÊÊı¾İº¯Êı
 			break;
 		}
 	}
- if (flag)					//Èç¹û´æÔÚ¸ÃÔ±¹¤£¬ÄÇÃ´Êä³ö¸ÃÔ±¹¤µÄĞÅÏ¢
+ if (flag)					//å¦‚æœå­˜åœ¨è¯¥å‘˜å·¥ï¼Œé‚£ä¹ˆè¾“å‡ºè¯¥å‘˜å·¥çš„ä¿¡æ¯
  {              
-		printf("±àºÅ\tĞÕÃû\tĞÔ±ğ\tÖ°³Æ\tÄêÁä\t¹¤×Ê\n");              
+		printf("ç¼–å·\tå§“å\tæ€§åˆ«\tèŒç§°\tå¹´é¾„\tå·¥èµ„\n");              
 		printf("%s\t", t[i].wo_name);
 		printf("%d\t", t[i].id);              
 		printf("%f\t", t[i].position_value);              
@@ -137,8 +137,8 @@ int find(zggz t[])				//²éÑ¯Ö°¹¤¹¤×ÊÊı¾İº¯Êı
 		printf("%f\t", t[i].Personal_income_tax);
 		printf("%f\t", t[i].payroll);
 		
-	 /*ÓÃjÀ´±ê¼ÇÔ±¹¤µÄÎ»ÖÃ£¬È»ºóÊä³ö¸ÃÔ±¹¤µÄĞÅÏ¢,
-	 µÚ¶ş´ÎÑ°ÕÒµÄÆğÊ¼Î»ÖÃÓ¦¸Ã´Ói+1¿ªÊ¼*/
+	 /*ç”¨jæ¥æ ‡è®°å‘˜å·¥çš„ä½ç½®ï¼Œç„¶åè¾“å‡ºè¯¥å‘˜å·¥çš„ä¿¡æ¯,
+	 ç¬¬äºŒæ¬¡å¯»æ‰¾çš„èµ·å§‹ä½ç½®åº”è¯¥ä»i+1å¼€å§‹*/
 	 for (j = i+1; j<count; j++)
 	 {                     
 		 if (t[j].id == gonghao)
@@ -154,7 +154,7 @@ int find(zggz t[])				//²éÑ¯Ö°¹¤¹¤×ÊÊı¾İº¯Êı
 		printf("%f\t", t[j].payroll);
 		 }
 	 }
- } else{ printf("Ã»ÓĞÕÒµ½¸Ã±àºÅÔ±¹¤.\n"); }
+ } else{ printf("æ²¡æœ‰æ‰¾åˆ°è¯¥ç¼–å·å‘˜å·¥.\n"); }
      
  printf("\n");
  system("pause");
@@ -162,14 +162,14 @@ int find(zggz t[])				//²éÑ¯Ö°¹¤¹¤×ÊÊı¾İº¯Êı
 }
 
 
-int list(zggz t[])				//ä¯ÀÀÖ°¹¤¹¤×ÊÊı¾İº¯Êı
+int list(zggz t[])				//æµè§ˆèŒå·¥å·¥èµ„æ•°æ®å‡½æ•°
 {
 	int j;
 	if(count=!0)
 	{
 		for(j=0;j<count;j++)
 		{
-		printf("±àºÅ\tĞÕÃû\tĞÔ±ğ\tÖ°³Æ\tÄêÁä\t¹¤×Ê\n");              
+		printf("ç¼–å·\tå§“å\tæ€§åˆ«\tèŒç§°\tå¹´é¾„\tå·¥èµ„\n");              
 		printf("%s\t", t[j].wo_name);
 		printf("%d\t", t[j].id);              
 		printf("%f\t", t[j].position_value);              
@@ -180,18 +180,18 @@ int list(zggz t[])				//ä¯ÀÀÖ°¹¤¹¤×ÊÊı¾İº¯Êı
 		printf("%f\t", t[j].Personal_income_tax);
 		printf("%f\t", t[j].payroll);
 		}
-	}else{ printf("Ã»ÓĞÔ±¹¤£¡\n");  }
+	}else{ printf("æ²¡æœ‰å‘˜å·¥\n");  }
 	return 0;
 }
 
-int modify(zggz t[])				//ĞŞ¸ÄÖ°¹¤¹¤×ÊÊı¾İº¯Êı
+int modify(zggz t[])				//ä¿®æ”¹èŒå·¥å·¥èµ„æ•°æ®å‡½æ•°
 {
 	double position_value, Pay_salary, duty_allowance, merit_pay, gross_pay, Personal_income_tax,payroll;
 	char gonghao[10];
-	int flag=0;						//±ê¼ÇÔ±¹¤ÓĞÃ»ÓĞ´æÔÚ
-	int j=0;						//¼ÇÂ¼Ô±¹¤´æÔÚµÄÎ»ÖÃ
-	int i=0;						//¼ÇÂ¼Ô±¹¤´æÔÚµÄÎ»ÖÃ
-	printf("ÇëÊäÈëÒª²éÑ¯µÄ¹¤ºÅ");
+	int flag=0;						//æ ‡è®°å‘˜å·¥æœ‰æ²¡æœ‰å­˜åœ¨
+	int j=0;						//è®°å½•å‘˜å·¥å­˜åœ¨çš„ä½ç½®
+	int i=0;						//è®°å½•å‘˜å·¥å­˜åœ¨çš„ä½ç½®
+	printf("è¯·è¾“å…¥è¦æŸ¥è¯¢çš„å·¥å·ï¼š");
 	scanf("%s",gonghao);
 	for(i=0;i<count;i++)
 	{
@@ -204,7 +204,7 @@ int modify(zggz t[])				//ĞŞ¸ÄÖ°¹¤¹¤×ÊÊı¾İº¯Êı
 
  if (flag)
  {              
-		printf("±àºÅ\tĞÕÃû\tĞÔ±ğ\tÖ°³Æ\tÄêÁä\t¹¤×Ê\n");              
+		printf("ç¼–å·\tå§“å\tæ€§åˆ«\tèŒç§°\tå¹´é¾„\tå·¥èµ„\n");              
 		printf("%s\t", t[i].wo_name);
 		printf("%d\t", t[i].id);              
 		printf("%f\t", t[i].position_value);              
@@ -214,68 +214,60 @@ int modify(zggz t[])				//ĞŞ¸ÄÖ°¹¤¹¤×ÊÊı¾İº¯Êı
 		printf("%f\t", t[i].gross_pay); 
 		printf("%f\t", t[i].Personal_income_tax);
 		printf("%f\t", t[i].payroll);     
-	 /*ÓÉÓÚÔ±¹¤Êı×éÖĞÓĞ¶à¸ö±àºÅÒ»ÑùµÄÔ±¹¤£¬ËùÒÔĞèÒª¼ÌĞøÑ°ÕÒ£¬ÓÃjÀ´±ê¼ÇÔ±¹¤µÄÎ»ÖÃ  È»ºóÊä³ö¸ÃÔ±¹¤µÄĞÅÏ¢             
-	 µÚ¶ş´ÎÑ°ÕÒµÄÆğÊ¼Î»ÖÃÓ¦¸Ã´Ói+1¿ªÊ¼ ÒòÎªÖ®Ç°µÄÒÑ¾­ÕÒ¹ıÁË*/
+	 /*ç”±äºå‘˜å·¥æ•°ç»„ä¸­æœ‰å¤šä¸ªç¼–å·ä¸€æ ·çš„å‘˜å·¥ï¼Œæ‰€ä»¥éœ€è¦ç»§ç»­å¯»æ‰¾ï¼Œç”¨jæ¥æ ‡è®°å‘˜å·¥çš„ä½ç½®  ç„¶åè¾“å‡ºè¯¥å‘˜å·¥çš„ä¿¡æ¯             
+	 ç¬¬äºŒæ¬¡å¯»æ‰¾çš„èµ·å§‹ä½ç½®åº”è¯¥ä»i+1å¼€å§‹ å› ä¸ºä¹‹å‰çš„å·²ç»æ‰¾è¿‡äº†*/
 	 for (j=i+1; j<count; j++)
 	 {                     
 		 if (t[j].id == gonghao)
 		 {     
-			 printf("\nÇëÊäÈëĞŞ¸Äposition_value");
+			 printf("\nè¯·è¾“å…¥ä¿®æ”¹position_value");
 			 scanf("%d",&position_value);
 				 t[j].position_value=position_value;
 
-			 printf("\nÇëÊäÈëĞŞ¸ÄPay_salary");
+			 printf("\nè¯·è¾“å…¥ä¿®æ”¹Pay_salary");
 			 			 scanf("%d",&Pay_salary);
 				 t[j].Pay_salary=Pay_salary;
 
-			 printf("\nÇëÊäÈëĞŞ¸Äduty_allowance");
+			 printf("\nè¯·è¾“å…¥ä¿®æ”¹duty_allowance");
 			 			 scanf("%d",&duty_allowance);
 				 t[j].duty_allowance=duty_allowance;
 
-			 printf("\nÇëÊäÈëĞŞ¸Ämerit_pay");
+			 printf("\nè¯·è¾“å…¥ä¿®æ”¹merit_pay");
 			 			 scanf("%d",&merit_pay);
 				 t[j].merit_pay=merit_pay;
 
-		     printf("\nÇëÊäÈëĞŞ¸Ägross_pay");
+		     printf("\nè¯·è¾“å…¥ä¿®æ”¹gross_pay");
 			 	scanf("%d",&gross_pay);
 				 t[j].gross_pay=gross_pay;
 		 }
 	 }
- } else{ printf("Ã»ÓĞÕÒµ½´Ë±àºÅÔ±¹¤¡£\n"); }
+ } else{ printf("æ²¡æœ‰æ‰¾åˆ°æ­¤ç¼–å·å‘˜å·¥ã€‚\n"); }
 	return 0;
 }
 
-void add_money(zggz S[])		//¼ÆËãÓ¦·¢¹¤×Ê       
-{
-	int i;
-	for(i=0;i<count;i++)
-		S[i].gross_pay=S[i].position_value+S[i].Pay_salary+S[i].duty_allowance+S[i].merit_pay;
-}
-
-
-void grsds(zggz S[])			//¼ÆËã¸öÈËËùµÃË°       
+void grsds(zggz S[])			//è®¡ç®—ä¸ªäººæ‰€å¾—ç¨       
 {
 	int i;
 	for(i=0;i<count;i++)
 	{
-		if(S[i].gross_pay<500)																									//²»³¬¹ı500ÔªµÄËùµÃË°£¨5%£©
-			S[i].Personal_income_tax=S[i].gross_pay*0.05;
-		else if(S[i].gross_pay<2000)																							//³¬¹ı500Ôªµ½2000ÔªµÄ²¿·ÖµÄËùµÃË°£¨10%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-2000)*0.1+500*0.05;	
-		else if(S[i].gross_pay<5000)																							//³¬¹ı2000Ôªµ½5000ÔªµÄ²¿·ÖµÄËùµÃË°£¨15%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-5000)*0.15+1500*0.1+500*0.05;														     			
-		else if(S[i].gross_pay<20000)																							//³¬¹ı5000Ôªµ½20000ÔªµÄ²¿·ÖµÄËùµÃË°£¨20%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-20000)*0.2+15000*0.15+1500*0.1+500*0.05;														    
-		else if(S[i].gross_pay<40000)																							//³¬¹ı20000Ôªµ½40000ÔªµÄ²¿·ÖµÄËùµÃË°£¨25%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-40000)*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;											     
-		else if(S[i].gross_pay<60000)																							//³¬¹ı40000Ôªµ½60000ÔªµÄ²¿·ÖµÄËùµÃË°£¨30%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-60000)*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;								     		
-		else if(S[i].gross_pay<80000)																							//³¬¹ı60000Ôªµ½80000ÔªµÄ²¿·ÖµÄËùµÃË°£¨35%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-80000)*0.35+20000*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;		     				
-		else if(S[i].gross_pay<100000)																							//³¬¹ı80000Ôªµ½100000ÔªµÄ²¿·ÖµÄËùµÃË°£¨40%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-80000)*0.4+20000*0.35+20000*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;				
-		else																													//³¬¹ı100000ÔªµÄ²¿·ÖµÄËùµÃË°£¨45%£©
-			S[i].Personal_income_tax=(S[i].gross_pay-100000)*0.45+20000*0.4+20000*0.35+20000*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;		
+		if(S[i].gross_pay<500)																									//ä¸è¶…è¿‡500å…ƒçš„æ‰€å¾—ç¨ï¼ˆ5%ï¼‰
+		S[i].Personal_income_tax=S[i].gross_pay*0.05;
+		else if(S[i].gross_pay<2000)																							//è¶…è¿‡500å…ƒåˆ°2000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ10%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-2000)*0.1+500*0.05;	
+		else if(S[i].gross_pay<5000)																							//è¶…è¿‡2000å…ƒåˆ°5000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ15%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-5000)*0.15+1500*0.1+500*0.05;														     			
+		else if(S[i].gross_pay<20000)																							//è¶…è¿‡5000å…ƒåˆ°20000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ20%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-20000)*0.2+15000*0.15+1500*0.1+500*0.05;														    
+		else if(S[i].gross_pay<40000)																							//è¶…è¿‡20000å…ƒåˆ°40000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ25%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-40000)*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;											     
+		else if(S[i].gross_pay<60000)																							//è¶…è¿‡40000å…ƒåˆ°60000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ30%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-60000)*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;								     		
+		else if(S[i].gross_pay<80000)																							//è¶…è¿‡60000å…ƒåˆ°80000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ35%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-80000)*0.35+20000*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;		     				
+		else if(S[i].gross_pay<100000)																							//è¶…è¿‡80000å…ƒåˆ°100000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ40%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-80000)*0.4+20000*0.35+20000*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;				
+		else																													//è¶…è¿‡100000å…ƒçš„éƒ¨åˆ†çš„æ‰€å¾—ç¨ï¼ˆ45%ï¼‰
+		S[i].Personal_income_tax=(S[i].gross_pay-100000)*0.45+20000*0.4+20000*0.35+20000*0.3+20000*0.25+20000*0.2+15000*0.15+1500*0.1+500*0.05;		
 	}
 }
 
@@ -291,22 +283,22 @@ int main()
     do{ 
         switch(menu()){
             case 1:
-                find(z);			//²éÑ¯Ö°¹¤¹¤×Êº¯Êı
+                find(z);			//æŸ¥è¯¢èŒå·¥å·¥èµ„å‡½æ•°
                 break;
             case 2:
-                modify(z);			//ĞŞ¸ÄÖ°¹¤¹¤×Êº¯Êı
+                modify(z);			//ä¿®æ”¹èŒå·¥å·¥èµ„å‡½æ•°
                 break;
             case 3:
-                add();				//Ìí¼ÓÖ°¹¤¹¤×Êº¯Êı
+                add();				//æ·»åŠ èŒå·¥å·¥èµ„å‡½æ•°
                 break;
             case 4:
-                del();				//É¾³ıÖ°¹¤¹¤×Êº¯Êı
+                del();				//åˆ é™¤èŒå·¥å·¥èµ„å‡½æ•°
                 break;
             case 5:
-                write(z);			//±£´æÖ°¹¤¹¤×Êº¯Êı
+                write(z);			//ä¿å­˜èŒå·¥å·¥èµ„å‡½æ•°
                 break;
             case 6:
-                list(z);			//ä¯ÀÀÖ°¹¤¹¤×Êº¯Êı
+                list(z);			//æµè§ˆèŒå·¥å·¥èµ„å‡½æ•°
 				break;
             case 7:
                 goto exit;
@@ -316,21 +308,21 @@ int main()
     return 0;
 }
 
-int menu()                                                //²Ëµ¥
+int menu()                                                //èœå•
 {
    int option=0;
     char i=0;
-	printf("****************Ö°¹¤¹¤×Ê¹ÜÀíÏµÍ³**************\n\n");
-    printf("¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î¡î\n");
-    printf("         1. ²é Ñ¯ Ö° ¹¤ ¹¤ ×Ê Êı ¾İ\n");
-    printf("         2. ĞŞ ¸Ä Ö° ¹¤ ¹¤ ×Ê Êı ¾İ\n");
-    printf("         3. Ìí ¼Ó Ö° ¹¤ ¹¤ ×Ê Êı ¾İ\n");
-    printf("         4. É¾ ³ı Ö° ¹¤ ¹¤ ×Ê Êı ¾İ\n");
-    printf("         5. ±£ ´æ Ö° ¹¤ ¹¤ ×Ê Êı ¾İ\n");
-    printf("         6. ä¯ ÀÀ Ö° ¹¤ ¹¤ ×Ê Êı ¾İ\n");
-	printf("         7.       ÍË ³ö Ïµ Í³\n");
-    printf("¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï¡ï\n\n");
-	printf("ÇëÊäÈëĞèÒªÖ´ĞĞÃüÁîµÄÊı×Ö±àºÅ(1-7):");
+    printf("****************èŒå·¥å·¥èµ„ç®¡ç†ç³»ç»Ÿ**************\n\n");
+    printf("â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†â˜†\n");
+    printf("         1. æŸ¥ è¯¢ èŒ å·¥ å·¥ èµ„ æ•° æ®\n");
+    printf("         2. ä¿® æ”¹ èŒ å·¥ å·¥ èµ„ æ•° æ®\n");
+    printf("         3. æ·» åŠ  èŒ å·¥ å·¥ èµ„ æ•° æ®\n");
+    printf("         4. åˆ  é™¤ èŒ å·¥ å·¥ èµ„ æ•° æ®\n");
+    printf("         5. ä¿ å­˜ èŒ å·¥ å·¥ èµ„ æ•° æ®\n");
+    printf("         6. æµ è§ˆ èŒ å·¥ å·¥ èµ„ æ•° æ®\n");
+    printf("         7.       é€€ å‡º ç³» ç»Ÿ\n");
+    printf("â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…\n\n");
+    printf("è¯·è¾“å…¥éœ€è¦æ‰§è¡Œå‘½ä»¤çš„æ•°å­—ç¼–å·(1-7):");
     scanf("%c",&i);
     option=(int)(i-'0');
 
